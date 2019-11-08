@@ -2,7 +2,7 @@ window.addEventListener("DOMContentLoaded", getData)
 
 function getData(){
     console.log("getData")
-    fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/posts?_embed")
+    fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/event?_embed")
     .then(res=>res.json())
     .then(handleData)
 }
