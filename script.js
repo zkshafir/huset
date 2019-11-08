@@ -1,39 +1,48 @@
 window.addEventListener("DOMContentLoaded", getData)
 
-function getData(){
+function getData() {
     console.log("getData")
     fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/event?_embed")
-    .then(res=>res.json())
-    .then(handleData)
+        .then(res => res.json())
+        .then(handleData)
 }
 
-function handleData(myData){
-//    console.log(myData);
+function handleData(myData) {
+    //    console.log(myData);
     //1. loop
-    myData.forEach(showPost)
+    myData.forEach(showEvent)
 }
 
-function showPost(post){
-    console.log(post)
-    //2.cloning a template
-    const template = document.querySelector(".postTemplate").content;
-    const postCopy = template.cloneNode(true);
+function showEvent(event) {
+    //if(event._embedded["wp:featuredmedia"][0]){
+    //console.log(event._embedded["wp:featuredmedia"]);
+    //
+
+
+
+    const template = document.querySelector(".eventTemplate").content;
+    const eventCopy = template.cloneNode(true);
     //3. textcontent and innerhtml
-    const h1 = postCopy.querySelector("h1")
-    h1.textContent=post.title.rendered;
+    const h1 = eventCopy.querySelector("h1")
+    h1.textContent = event.title.rendered;
 
-    const img = postCopy.querySelector("img.cover");
+    if (typeof(event._embedded["wp:featuredmedia"]) !== 'undefinied') {
+        console.log(event._embedded["wp:featuredmedia"]);
+        //debugger;
+        const img = eventCopy.querySelector("img.cover");
+        const imgPath = event._embedded["wp:featuredmedia"][0].media_details.sizes.thumbnail.source_url;
+        img.setAttribute("src", imgPath)
+        img.setAttribute("alt", "Poster for event" + event.title.rendered)
 
-    img.setAttribute("src", imgPath)
-    img.setAttribute("alt", "Poster for event" + post.title)
+    }
 
-    const a = postCopy.querySelector("a");
-    a.href="sub.html?greeting="+post.title.rendered
-    const content = postCopy.querySelector("section");
-    content.innerHTML=post.content.rendered;
+    const a = eventCopy.querySelector("a");
+    a.href = "sub.html?id=" + event.id
+
+    const content = eventCopy.querySelector("section");
+    content.innerHTML = event.content.rendered;
 
 
     //4 append
-    document.querySelector("#posts").appendChild(postCopy)
+    document.querySelector("#posts").appendChild(eventCopy)
 }
-
