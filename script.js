@@ -21,6 +21,19 @@ function showPost(post){
     //3. textcontent and innerhtml
     const h1 = postCopy.querySelector("h1")
     h1.textContent=post.title.rendered;
+
+    const img = postCopy.querySelector("img.cover");
+
+    img.setAttribute("src", imgPath)
+    img.setAttribute("alt", "Poster for event" + post.title)
+
+    const a = postCopy.querySelector("a");
+    a.href="sub.html?greeting="+post.title.rendered
+    const content = postCopy.querySelector("section");
+    content.innerHTML=post.content.rendered;
+
+
     //4 append
     document.querySelector("#posts").appendChild(postCopy)
 }
+
