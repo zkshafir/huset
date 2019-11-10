@@ -47,11 +47,10 @@ function showEvent(event) {
     const h1 = eventCopy.querySelector("h1")
     h1.textContent = event.title.rendered;
 
+    // add featured image
     if (typeof (event._embedded["wp:featuredmedia"]) !== 'undefined') {
-        //        console.log(event._embedded["wp:featuredmedia"]);
-        //debugger;
         const img = eventCopy.querySelector("img.cover");
-        const imgPath = event._embedded["wp:featuredmedia"][0].media_details.sizes.thumbnail.source_url;
+        const imgPath = event._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url;
         img.setAttribute("src", imgPath)
         img.setAttribute("alt", "Poster for event" + event.title.rendered)
     }
@@ -60,8 +59,14 @@ function showEvent(event) {
     a.href = "sub.html?id=" + event.id
 
     // add content to section in template
-    const content = eventCopy.querySelector("section");
+    const content = eventCopy.querySelector(".body_copy");
     content.innerHTML = event.excerpt.rendered;
+
+    const bodyDate = eventCopy.querySelector(".body_date");
+    bodyDate.textContent = event.event_date;
+
+    const bodyTime = eventCopy.querySelector(".body_time");
+    bodyTime.textContent = event.start_time;
 
     //4 append
     document.querySelector("#posts").appendChild(eventCopy)
