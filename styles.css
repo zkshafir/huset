@@ -33,6 +33,7 @@ img {
 
 h1 {
     font-family: var(--primary-font);
+    font-size: 2rem;
 }
 
 .wrapper {
@@ -48,6 +49,9 @@ h1 {
 
 article {
     background: yellow;
+    margin: 2rem;
+    padding: 2rem;
+    line-height: 2rem;
 }
 
 .page_header {
