@@ -25,6 +25,8 @@
 body {
     font-family: var(--secondary-font);
     background: var(--bg-color);
+    max-width: 1300px;
+    margin: auto;
 }
 
 /* set image max width*/
@@ -39,7 +41,7 @@ h1 {
 
 .wrapper {
     display: grid;
-    grid-template-columns: 3rem 1fr 3rem;
+    grid-template-columns: 2rem 1fr 2rem;
     grid-template-rows: auto;
 }
 
