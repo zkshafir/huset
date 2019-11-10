@@ -59,8 +59,8 @@ function showEvent(event) {
     a.href = "sub.html?id=" + event.id
 
     // add content to section in template
-    const content = eventCopy.querySelector(".body_copy");
-    content.innerHTML = event.excerpt.rendered;
+    //    const content = eventCopy.querySelector(".body_copy");
+    //    content.innerHTML = event.excerpt.rendered;
 
     const bodyDate = eventCopy.querySelector(".body_date");
     bodyDate.textContent = event.event_date;
@@ -70,6 +70,9 @@ function showEvent(event) {
 
     const bodyVenue = eventCopy.querySelector(".body_venue");
     bodyVenue.textContent = event.venue;
+
+//    const bodyTicket = eventCopy.querySelector(".body_ticket");
+//    bodyTicket.innerHTML = event.purchase_ticket;
 
     //4 append
     document.querySelector("#posts").appendChild(eventCopy)
