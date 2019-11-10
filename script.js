@@ -50,7 +50,7 @@ function showEvent(event) {
     // add featured image
     if (typeof (event._embedded["wp:featuredmedia"]) !== 'undefined') {
         const img = eventCopy.querySelector("img.cover");
-        const imgPath = event._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url;
+        const imgPath = event._embedded["wp:featuredmedia"][0].media_details.sizes.medium_large.source_url;
         img.setAttribute("src", imgPath)
         img.setAttribute("alt", "Poster for event" + event.title.rendered)
     }

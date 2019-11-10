@@ -56,6 +56,25 @@ article {
     padding: 2rem;
 }
 
+.article_header {
+    background: red;
+    position: relative;
+    text-align: center;
+}
+
+.article_header > a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.article_header > .cover {
+    filter:grayscale(100%);
+    z-index: -1;
+}
+
 .page_header {
     grid-column: 1/4;
 }
