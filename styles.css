@@ -46,6 +46,10 @@ h1 {
     grid-row: 2;
 }
 
+article {
+    background: yellow;
+}
+
 .page_header {
     grid-column: 1/3;
 }
