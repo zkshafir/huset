@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit:800|Source+Sans+Pro&display=swap');
+
+/* setup variables*/
+:root {
+    --bg-color: #D4EFFC;
+    --primary-color: black;
+    --secondary-color: #D71635;
+    --tertiary-color: #005F2A;
+    --fourth-color: #D8D8D8;
+    --primary-font: 'Kanit', sans-serif;
+    --secondary-font: 'Arial', sans-serif;
+    --animation: fadein 2s ease-in-out 0.2s 1 normal forwards;
+    --animation-body: bodyanim 2s ease-in-out 0.2s 1 normal forwards;
+    --line-height: 2rem;
+}
+
+/*set border box*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* set body font */
+body {
+    font-family: var(--secondary-font);
+}
+
+/* set image max width*/
+img {
+    max-width: 100%;
+}
+
+h1 {
+    font-family: var(--primary-font);
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 3rem 1fr 3rem;
+    grid-template-rows: auto;
+}
+
+#posts {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.page_header {
+    grid-column: 1/3;
+}
