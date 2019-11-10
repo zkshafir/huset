@@ -24,6 +24,7 @@
 /* set body font */
 body {
     font-family: var(--secondary-font);
+    background: var(--bg-color);
 }
 
 /* set image max width*/

@@ -59,8 +59,9 @@ function showEvent(event) {
     const a = eventCopy.querySelector("a");
     a.href = "sub.html?id=" + event.id
 
+    // add content to section in template
     const content = eventCopy.querySelector("section");
-    content.innerHTML = event.content.rendered;
+    content.innerHTML = event.excerpt.rendered;
 
     //4 append
     document.querySelector("#posts").appendChild(eventCopy)
