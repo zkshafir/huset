@@ -9,8 +9,7 @@
     --fourth-color: #D8D8D8;
     --primary-font: 'Kanit', sans-serif;
     --secondary-font: 'Arial', sans-serif;
-    --animation: fadein 2s ease-in-out 0.2s 1 normal forwards;
-    --animation-body: bodyanim 2s ease-in-out 0.2s 1 normal forwards;
+    --animation-text-block: fadein 2s ease-in-out 0.2s 1 normal forwards;
     --line-height: 2rem;
 }
 
@@ -64,9 +63,10 @@ article {
 
 .article_header > a {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 1rem;
+    bottom: 0;
+    background: green;
     z-index: 1;
 }
 
