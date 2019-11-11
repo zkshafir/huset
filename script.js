@@ -2,6 +2,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
     const urlParams = new URLSearchParams(window.location.search);
+    const search = urlParams.get("search");
     const id = urlParams.get("id");
     const category = urlParams.get("category");
 
@@ -30,6 +31,15 @@ function getNavigation(){
 function addLink(oneItem){
     console.log(oneItem.name)
 //    document.querySelector("nav").innerHTML=oneItem.name
+
+    function getSearchData(){
+  const urlParams = new URLSearchParams(window.location.search);
+  const search = urlParams.get("search");
+
+  fetch("https://kea-alt-del.dk/t9_2019_autumn/wp-json/wp/v2/book?_embed&search="+search)
+    .then(res=>res.json())
+    .then(handleData)
+}
 
 const link = document.createElement("a");
     link.textContent=oneItem.name;
@@ -122,3 +132,32 @@ function showEvent(event) {
     //4 append
     document.querySelector("#posts").appendChild(eventCopy)
 }
+
+//nav//
+
+const navSlide = () => {
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav-links');
+            const navLinks = document.querySelectorAll('.nav-links li');
+            //    Toggle Nav
+            burger.addEventListener('click', () => {
+                nav.classList.toggle('nav-active');
+
+                //Animate Links
+                navLinks.forEach((link, index) => {
+                    if (link.style.animation) {
+                        link.style.animation = ''
+                    } else {
+                        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.6}s`;
+                    }
+                });
+
+                //     Burger Animation
+
+                burger.classList.toggle('toggle');
+
+            });
+
+        }
+
+        navSlide();
