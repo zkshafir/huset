@@ -8,42 +8,42 @@ function init() {
 
     if (id) {
         getSingleEvent(id);
+    } else if (category) {
+        getCategoryData(category);
     } else {
         getData();
     }
     //        console.log("id")
 
 
-    getNavigation()
+    getNavigation();
 }
 
-
-
-function getNavigation(){
+function getNavigation() {
     fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/categories?per_page=100")
-    .then(res=>res.json())
-          .then(data=>{
-//        console.log(data)
-        data.forEach(addLink)
-    })
+        .then(res => res.json())
+        .then(data => {
+            //        console.log(data)
+            data.forEach(addLink)
+        })
 }
 
-function addLink(oneItem){
+function addLink(oneItem) {
     console.log(oneItem.name)
-//    document.querySelector("nav").innerHTML=oneItem.name
+    //    document.querySelector("nav").innerHTML=oneItem.name
 
-    function getSearchData(){
-  const urlParams = new URLSearchParams(window.location.search);
-  const search = urlParams.get("search");
+    function getSearchData() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const search = urlParams.get("search");
 
-  fetch("https://kea-alt-del.dk/t9_2019_autumn/wp-json/wp/v2/book?_embed&search="+search)
-    .then(res=>res.json())
-    .then(handleData)
-}
+        fetch("https://kea-alt-del.dk/t9_2019_autumn/wp-json/wp/v2/book?_embed&search=" + search)
+            .then(res => res.json())
+            .then(handleData)
+    }
 
-const link = document.createElement("a");
-    link.textContent=oneItem.name;
-    link.setAttribute("href", "category.html?category="+oneItem.id)
+    const link = document.createElement("a");
+    link.textContent = oneItem.name;
+    link.setAttribute("href", "category.html?category=" + oneItem.id)
     document.querySelector("nav").appendChild(link);
 
 }
@@ -57,7 +57,7 @@ function getData() {
 
 function getCategoryData(catId) {
     //        console.log("getData")
-    fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/event?_embed")
+    fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/event?_embed&per_page=100&categories=" + catId)
         .then(res => res.json())
         .then(handleData)
 }
@@ -136,28 +136,28 @@ function showEvent(event) {
 //nav//
 
 const navSlide = () => {
-            const burger = document.querySelector('.burger');
-            const nav = document.querySelector('.nav-links');
-            const navLinks = document.querySelectorAll('.nav-links li');
-            //    Toggle Nav
-            burger.addEventListener('click', () => {
-                nav.classList.toggle('nav-active');
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+    //    Toggle Nav
+    burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
 
-                //Animate Links
-                navLinks.forEach((link, index) => {
-                    if (link.style.animation) {
-                        link.style.animation = ''
-                    } else {
-                        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.6}s`;
-                    }
-                });
+        //Animate Links
+        navLinks.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = ''
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.6}s`;
+            }
+        });
 
-                //     Burger Animation
+        //     Burger Animation
 
-                burger.classList.toggle('toggle');
+        burger.classList.toggle('toggle');
 
-            });
+    });
 
-        }
+}
 
-        navSlide();
+navSlide();
