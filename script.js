@@ -3,6 +3,7 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
+    const category = urlParams.get("category");
 
     if (id) {
         getSingleEvent(id);
@@ -10,6 +11,34 @@ function init() {
         getData();
     }
     //        console.log("id")
+
+
+    getNavigation()
+}
+
+if(category){
+    console.log("you should be showing category: ", category)
+           //category stuff
+}
+
+function getNavigation(){
+    fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/categories?per_page=100")
+    .then(res=>res.json())
+          .then(data=>{
+//        console.log(data)
+        data.forEach(addLink)
+    })
+}
+
+function addLink(oneItem){
+    console.log(oneItem.name)
+//    document.querySelector("nav").innerHTML=oneItem.name
+
+const link = document.createElement("a");
+    link.textContent=oneItem.name;
+    link.setAttribute("href", "category.html?category="+oneItem.id)
+    document.querySelector("nav").appendChild(link);
+
 }
 
 function getData() {
@@ -55,14 +84,11 @@ function showEvent(event) {
     const h1 = eventCopy.querySelector("h1")
     h1.textContent = event.title.rendered;
 
-<<<<<<< HEAD
+
     if (typeof (event._embedded["wp:featuredmedia"]) !== 'undefined') {
         console.log(event._embedded["wp:featuredmedia"]);
         //debugger;
-=======
-    // add featured image
-    if (typeof (event._embedded["wp:featuredmedia"]) !== 'undefined') {
->>>>>>> huset_shared/master
+
         const img = eventCopy.querySelector("img.cover");
         const imgPath = event._embedded["wp:featuredmedia"][0].media_details.sizes.medium_large.source_url;
         img.setAttribute("src", imgPath)
