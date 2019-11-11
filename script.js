@@ -16,10 +16,7 @@ function init() {
     getNavigation()
 }
 
-if(category){
-    console.log("you should be showing category: ", category)
-           //category stuff
-}
+
 
 function getNavigation(){
     fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/categories?per_page=100")
@@ -48,6 +45,13 @@ function getData() {
         .then(handleData)
 }
 
+function getCategoryData(catId) {
+    //        console.log("getData")
+    fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/event?_embed")
+        .then(res => res.json())
+        .then(handleData)
+}
+
 function handleData(myData) {
     //    console.log(myData);
     //1. loop
@@ -62,6 +66,7 @@ function getSingleEvent(catId) {
         .then(res => res.json())
         .then(showSingleEvent)
 }
+
 
 function showSingleEvent(event) {
     //    console.log(event)
