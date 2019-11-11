@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit:800|Source+Sans+Pro&display=swap');
+
+/* setup variables*/
+:root {
+    --bg-color: #D4EFFC;
+    --primary-color: black;
+    --secondary-color: #D71635;
+    --tertiary-color: #005F2A;
+    --fourth-color: #D8D8D8;
+    --primary-font: 'Kanit', sans-serif;
+    --secondary-font: 'Arial', sans-serif;
+    --animation-text-block: fadeUp 0.3s ease forwards;
+    --line-height: 2rem;
+}
+
+/*set border box*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+/* set body font */
+body {
+    font-family: var(--secondary-font);
+    background: var(--bg-color);
+    max-width: 1300px;
+    margin: auto;
+}
+
+/* set image max width*/
+img {
+    max-width: 100%;
+}
+
+/* setup grid on wrapper */
+.wrapper {
+    display: grid;
+    grid-template-columns: 2rem 1fr 2rem;
+    grid-template-rows: auto;
+}
+
+/* h1 styling */
+h1 {
+    font-family: var(--primary-font);
+    text-transform: uppercase;
+}
+
+/* styling of posts from backend */
+#posts {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+/*article styling */
+article {
+    background: yellow;
+    margin: 2rem;
+    padding: 2rem;
+}
+
+.article_header {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.article_header:hover a {
+    bottom: 0;
+    height: 100%;
+    animation: var(--animation-text-block);
+}
+
+.article_header > a {
+    position: absolute;
+    color: white;
+    bottom: 100%;
+    width: 100%;
+    height: 0;
+    padding: 2rem;
+    background: green;
+    z-index: 1;
+}
+
+article > .body_date {
+    display: flex;
+    justify-content: flex-end;
+}
+
+article > .body_time {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    100% {
+        opacity: 100%;
+        transform: translateY(0%);
+    }
+}
+
+.article_header > .cover {
+    filter: grayscale(100%);
+    z-index: -1;
+}
+
+.page_header {
+    grid-column: 2/3;
+    font-size: 50px;
+    margin: auto;
+}
+
+footer {
+    background: var(--fourth-color);
+    color: white;
+    padding: 3rem;
+    grid-column: 1/4;
+    grid-row: 3;
+}
