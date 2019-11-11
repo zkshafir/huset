@@ -53,7 +53,7 @@ function showEvent(event) {
     const h1 = eventCopy.querySelector("h1")
     h1.textContent = event.title.rendered;
 
-    if (typeof (event._embedded["wp:featuredmedia"]) !== 'undefinied') {
+    if (typeof (event._embedded["wp:featuredmedia"]) !== 'undefined') {
         console.log(event._embedded["wp:featuredmedia"]);
         //debugger;
         const img = eventCopy.querySelector("img.cover");
