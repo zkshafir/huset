@@ -1,31 +1,41 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Huset Eat</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-       <section id="posts"></section>
-    <template class="eventTemplate">
-    <article>
-    <header>
-        <a href="sub.html?id="><h1>TITLE GOES HERE</h1></a>
-      <img src="" alt="" class="cover">
+    <div class="wrapper">
+        <header class="page_header">
+            <h1>Hus–eat</h1>
         </header>
+        <section id="posts">
+            <template class="eventTemplate">
+                <article>
+                    <section class="body_date">DATE</section>
+                    <section class="body_time">TIME</section>
+                    <header class="article_header">
+                        <a href="sub.html?id=">
+                            <h1>TITLE GOES HERE</h1>
+                        </a>
+                        <img src="" alt="" class="cover">
 
-    <section class="body-copy">BODY STUFF HERE</section>
-    </article>
+                    </header>
+                    <section class="body_copy">BODY STUFF HERE</section>
 
-        </template>
+                    <h1 class="body_venue">VENUE</h1>
+                    <!--                    <a href="">PURCHASE TICKET</a>-->
+                </article>
+            </template>
+        </section>
+        <footer>
+            <h2>This is the footer</h2>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
-
-<!--
-
--->
