@@ -24,12 +24,13 @@ function getNavigation() {
             data.forEach(addLink)
         })
 
-    // add tags
-    fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/tags?per_page=100")
-        .then(res => res.json())
-        .then(data => {
-            data.forEach(addLink)
-        })
+//    // add tags
+//    fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/tags?per_page=100")
+//        .then(res => res.json())
+//        .then(data => {
+//            data.forEach(addLink)
+//        })
+
 }
 
 // function for search + add categories to navigation
@@ -44,22 +45,25 @@ function addLink(oneItem) {
 
     // add categories to navigation
     const link = document.createElement("a");
-    link.textContent = oneItem.name;
+    link.textContent = oneItem.name + "hellooooo";
     link.setAttribute("href", "index.html?category=" + oneItem.id)
     document.querySelector("nav").appendChild(link);
 }
 
+// get JSON date + embedded data
 function getData() {
     fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/event?_embed")
         .then(res => res.json())
         .then(handleData)
 }
 
+// get categories
 function getCategoryData(catId) {
     fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/event?_embed&per_page=100&categories=" + catId)
         .then(res => res.json())
         .then(handleData)
 
+    // get tags
     fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/event?_embed&per_page=100&tags=" + catId)
         .then(res => res.json())
         .then(handleData)
@@ -91,7 +95,7 @@ function showSingleEvent(event) {
     document.querySelector(".body_time").textContent = event.start_time;
 }
 
-// show all events on index
+// show all events on index page
 function showEvent(event) {
     const template = document.querySelector(".eventTemplate").content;
     const eventCopy = template.cloneNode(true);
