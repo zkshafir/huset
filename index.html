@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,13 +13,28 @@
         <header class="page_header">
             <h1>HUS-EAT</h1>
             <h2>Food For Thought</h2>
-            <nav class="main_nav">
-                <a href="#">ABOUT</a>
-                <a href="#">FOOD</a>
-                <a href="#">FOOD + FILM</a>
-                <a href="#">CONTACT</a>
+            <nav class="navbar">
+<!--                <img class="logo" src="img/">-->
+                <span class="open-slide">
+                    <a href="#" onclick="openSlideMenu()">
+                        <svg width="30" height="30">
+                            <path d="M0,5 30,5" stroke="#fff" stroke-width="5" />
+                            <path d="M0,14 30,14" stroke="#fff" stroke-width="5" />
+                            <path d="M0,23 30,23" stroke="#fff" stroke-width="5" />
+                        </svg>
+                    </a>
+                </span>
+                <ul class="navbar-nav">
+                    <li><a class="active" href="index.html">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
             </nav>
-<!--
+            <div id="side-menu" class="side-nav">
+                <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+                <a class="active" href="index.html">Home</a>
+                <a href="#">About</a>
+            </div>
+            <!--
             <form action="search.html"></form>
             <input name="search" type="search">
             <input type="submit" value="search">
@@ -30,14 +46,17 @@
                     <section class="event_tags">
                         <h3>TAGS</h3>
                     </section>
+                    <section class="date_grid">
+                        <section class="body_date">
+                            <h2>DATE</h2>
+                        </section>
+                        <section class="body_time">
+                            <h2>TIME</h2>
+                        </section>
+                    </section>
+                    <hr>
                     <section class="event_title">
                         <h1>TITLE</h1>
-                    </section>
-                    <section class="body_date">
-                        <h2>DATE</h2>
-                    </section>
-                    <section class="body_time">
-                        <h2>TIME</h2>
                     </section>
                     <header class="article_header">
                         <a href="sub.html?id=" class="piccy">
@@ -48,15 +67,15 @@
                         </div>
                     </header>
                     <h1 class="body_venue">VENUE</h1>
-                    <!--                    <a href="">PURCHASE TICKET</a>-->
                     <h3 class="meal_type">MEAL TYPE</h3>
                 </article>
             </template>
         </section>
         <footer>
-            <h2>This is the footer</h2>
+            <h2>© Huset-KBH 2019</h2>
         </footer>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -2,7 +2,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
     const urlParams = new URLSearchParams(window.location.search);
-    const search = urlParams.get("search");
+    //    const search = urlParams.get("search");
     const id = urlParams.get("id");
     const category = urlParams.get("category");
 
@@ -13,6 +13,7 @@ function init() {
     } else {
         getData();
     }
+
     getNavigation();
 }
 
@@ -24,30 +25,22 @@ function getNavigation() {
             data.forEach(addLink)
         })
 
-//    // add tags
-//    fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/tags?per_page=100")
-//        .then(res => res.json())
-//        .then(data => {
-//            data.forEach(addLink)
-//        })
-
+    //    // add tags
+    //    //        fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/tags?per_page=100")
+    //    fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/tags?=" + 2)
+    //        .then(res => res.json())
+    //        .then(data => {
+    //            data.forEach(addLink)
+    //        })
 }
 
 // function for search + add categories to navigation
 function addLink(oneItem) {
-    function getSearchData() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const search = urlParams.get("search");
-        fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/event?_embed&search=" + search)
-            .then(res => res.json())
-            .then(handleData)
-    }
-
-    // add categories to navigation
     const link = document.createElement("a");
-    link.textContent = oneItem.name + "hellooooo";
-    link.setAttribute("href", "index.html?category=" + oneItem.id)
-    document.querySelector("nav").appendChild(link);
+    link.textContent = oneItem.name;
+    link.setAttribute("href", "index.html?category=" + oneItem.id);
+    //    link.setAttribute("href", "index.html?category=" + 9 + "%2B" + 2);
+    document.querySelector(".side-nav").appendChild(link);
 }
 
 // get JSON date + embedded data
@@ -124,18 +117,30 @@ function showEvent(event) {
         h3.style.color = "green";
         const imgContainer = eventCopy.querySelector(".event_excerpt");
         imgContainer.setAttribute("class", "vegan_meal");
-    }
-
-    const a = eventCopy.querySelector("a");
-    a.href = "sub.html?id=" + event.id;
-
-    const img = eventCopy.querySelector("img.cover");
-    const imgPath = event._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url;
-    img.setAttribute("src", imgPath)
-    img.setAttribute("alt", "Poster for event" + event.title.rendered)
-
-    //    const bodyTicket = eventCopy.querySelector(".body_ticket");
-    //    bodyTicket.innerHTML = event.purchase_ticket;
-
-    document.querySelector("#posts").appendChild(eventCopy)
 }
+
+const a = eventCopy.querySelector("a");
+a.href = "sub.html?id=" + event.id;
+
+const img = eventCopy.querySelector("img.cover");
+const imgPath = event._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url;
+img.setAttribute("src", imgPath)
+img.setAttribute("alt", "Poster for event" + event.title.rendered)
+
+//    const bodyTicket = eventCopy.querySelector(".body_ticket");
+//    bodyTicket.innerHTML = event.purchase_ticket;
+
+document.querySelector("#posts").appendChild(eventCopy)
+}
+
+// navigation mobile
+function openSlideMenu(){
+    document.getElementById('side-menu').style.width = '250px';
+    document.getElementById('main_content').style.marginLeft = '250px';
+}
+
+function closeSlideMenu(){
+    document.getElementById('side-menu').style.width = '0';
+    document.getElementById('main_content').style.marginLeft = '0';
+}
+

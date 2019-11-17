@@ -37,6 +37,15 @@ img {
     max-width: 100%;
 }
 
+hr {
+    border: none;
+    height: 3px;
+    background-color: var(--tertiary-color);
+    color: aqua;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+/*
 nav {
     list-style: none;
     display: flex;
@@ -52,6 +61,7 @@ nav a {
     padding: 0.3rem;
     margin: 0.3rem;
 }
+*/
 
 /* setup grid on wrapper */
 .wrapper {
@@ -68,7 +78,13 @@ h1 {
 }
 
 h2 {
-    font-family: var(--secondary-font);
+    font-family: var(--primary-font);
+    text-transform: uppercase;
+}
+
+.event_title {
+    color: var(--secondary-color);
+    font-family: var(--primary-font);
     text-transform: uppercase;
 }
 
@@ -78,6 +94,7 @@ h2 {
     grid-row: 2;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    filter: drop-shadow(10px 10px 0px var(--secondary-color))
 }
 
 /*article styling */
@@ -87,7 +104,6 @@ article {
     background: yellow;
     margin: 1rem;
     padding: 1rem;
-    border-radius: 1rem;
 }
 
 .article_header {
@@ -109,12 +125,19 @@ article {
     right: 0;
     width: 100%;
     padding: 2rem;
-    background: black;
+    background: var(--secondary-color);
     z-index: 1;
 }
 
 .vegan_meal {
     background-color: green;
+    padding: 2rem;
+}
+
+.date_grid {
+    display: flex;
+    justify-content: space-between;
+
 }
 
 article > .body_date {
@@ -140,11 +163,10 @@ article > .body_time {
 }
 
 .img_container {
-    height: 200px;
+    margin-top: 0.5rem;
+    height: 250px;
     width: 100%;
-    background: red;
     background-size: cover;
-    /*    filter: grayscale(100%);*/
     z-index: -1;
 }
 
@@ -158,4 +180,81 @@ footer {
     padding: 3rem;
     grid-column: 1/4;
     grid-row: 3;
+}
+
+/* navigation styling*/
+.navbar {
+    overflow: hidden;
+    height: 130px;
+    font-family: var(--primary-font);
+    text-transform: uppercase;
+}
+
+.navbar .logo {
+    position: absolute;
+    float: left;
+    width: 60px;
+    left: 25px;
+    top: 25px;
+}
+
+.open-slide {
+    position: absolute;
+    top: 30px;
+    right: 15px;
+}
+
+.navbar a {
+    float: right;
+    display: flex;
+    flex-direction: row;
+    margin-right: 2rem;
+    text-align: right;
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+.navbar ul {
+    margin: 0 0 0 15vw;
+    list-style: none;
+}
+
+.navbar a:hover {
+    color: var(--secondary-color);
+}
+
+.side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: var(--fourth-color);
+    overflow-x: hidden;
+    padding-top: 80px;
+    transition: 0.5s;
+}
+
+.side-nav a {
+    font-family: var(--primary-font);
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    padding: 10px 10px 10px 30px;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-nav a:hover {
+    color: white;
+}
+
+.side-nav .btn-close {
+    position: absolute;
+    color: black;
+    top: 0px;
+    right: 15px;
+    font-size: 56px;
+    margin-left: 50px;
 }
