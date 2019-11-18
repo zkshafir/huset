@@ -130,14 +130,27 @@ article {
 }
 
 .vegan_meal {
-    background-color: green;
+    background-color: var(--tertiary-color);
     padding: 2rem;
+}
+
+.vegan_meal_text {
+    color: var(--tertiary-color);
+    text-transform: uppercase;
+}
+
+.meat_meal {
+    color: var(--secondary-color);
+    text-transform: uppercase;
 }
 
 .date_grid {
     display: flex;
     justify-content: space-between;
+}
 
+.event_tags {
+    display: none;
 }
 
 article > .body_date {
@@ -180,6 +193,7 @@ footer {
     padding: 3rem;
     grid-column: 1/4;
     grid-row: 3;
+    margin-top: 2rem;
 }
 
 /* navigation styling*/
@@ -193,14 +207,14 @@ footer {
 .navbar .logo {
     position: absolute;
     float: left;
-    width: 60px;
+    width: 250px;
     left: 25px;
     top: 25px;
 }
 
 .open-slide {
     position: absolute;
-    top: 30px;
+    top: 0px;
     right: 15px;
 }
 
@@ -209,6 +223,7 @@ footer {
     display: flex;
     flex-direction: row;
     margin-right: 2rem;
+    margin-top: 3.5rem;
     text-align: right;
     text-decoration: none;
     color: var(--secondary-color);
@@ -232,7 +247,7 @@ footer {
     right: 0;
     background-color: var(--fourth-color);
     overflow-x: hidden;
-    padding-top: 80px;
+    padding-top: 120px;
     transition: 0.5s;
 }
 
@@ -243,6 +258,7 @@ footer {
     padding: 10px 10px 10px 30px;
     text-decoration: none;
     display: block;
+    font-size: 1.5rem;
     transition: 0.3s;
 }
 
@@ -254,7 +270,20 @@ footer {
     position: absolute;
     color: black;
     top: 0px;
-    right: 15px;
-    font-size: 56px;
+    right: 35px;
+    font-size: 76px;
     margin-left: 50px;
+}
+
+/* desktop style */
+@media (min-width: 768px) {
+    .open-slide {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-nav {
+        display: none;
+    }
 }

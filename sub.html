@@ -4,19 +4,43 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sub Page</title>
+    <title>Hus-Eat</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+    <link rel="manifest" href="images/icons/site.webmanifest">
+    <link rel="mask-icon" href="images/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
     <div class="wrapper">
         <header class="page_header">
-            <h1>HUS-EAT</h1>
-            <h2>Food For Thought</h2>
-            <nav></nav>
-            <form action="search.html"></form>
-            <input name="search" type="search">
-            <input type="submit" value="search">
+
+            <nav class="navbar">
+                <a href="index.html"><img class="logo" src="images/huset_eat_logo.png"></a>
+                <span class="open-slide">
+                    <a href="#" onclick="openSlideMenu()">
+                        <svg width="30" height="30">
+                            <path d="M0,5 30,5" stroke="#000" stroke-width="5" />
+                            <path d="M0,14 30,14" stroke="#000" stroke-width="5" />
+                            <path d="M0,23 30,23" stroke="#000" stroke-width="5" />
+                        </svg>
+                    </a>
+                </span>
+                <ul class="navbar-nav">
+                    <li><a class="active" href="index.html">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <div id="side-menu" class="side-nav">
+                <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+                <a class="active" href="index.html">Home</a>
+                <a href="#">About</a>
+            </div>
+
         </header>
         <section id="posts">
             <section class="eventTemplate">
@@ -38,7 +62,7 @@
                 </article>
             </section>
         </section>
-        <footer></footer>
+        <footer>© Huset-KBH 2019</footer>
     </div>
     <script src="script.js"></script>
 </body>

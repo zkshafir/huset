@@ -13,7 +13,6 @@ function init() {
     } else {
         getData();
     }
-
     getNavigation();
 }
 
@@ -39,8 +38,8 @@ function addLink(oneItem) {
     const link = document.createElement("a");
     link.textContent = oneItem.name;
     link.setAttribute("href", "index.html?category=" + oneItem.id);
-    //    link.setAttribute("href", "index.html?category=" + 9 + "%2B" + 2);
-    document.querySelector(".side-nav").appendChild(link);
+    //        link.setAttribute("href", "index.html?category=" + 9 + "%2B" + 2);
+    document.querySelector(".navbar-nav").appendChild(link);
 }
 
 // get JSON date + embedded data
@@ -111,36 +110,40 @@ function showEvent(event) {
     const eventTags = eventCopy.querySelector(".event_tags");
     eventTags.textContent = event.tags;
 
-    if (eventTags.textContent.includes("42")) {
+    if (eventTags.textContent.includes("41")) {
         const h3 = eventCopy.querySelector(".meal_type");
-        h3.textContent = ("Vegan");
-        h3.style.color = "green";
+        h3.textContent = ("No Meat Eat!");
+        h3.setAttribute("class", "vegan_meal_text");
         const imgContainer = eventCopy.querySelector(".event_excerpt");
         imgContainer.setAttribute("class", "vegan_meal");
-}
 
-const a = eventCopy.querySelector("a");
-a.href = "sub.html?id=" + event.id;
+    } else {
+        const h3 = eventCopy.querySelector(".meal_type");
+        h3.textContent = ("Meat Eat!");
+        h3.setAttribute("class", "meat_meal");
+    }
 
-const img = eventCopy.querySelector("img.cover");
-const imgPath = event._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url;
-img.setAttribute("src", imgPath)
-img.setAttribute("alt", "Poster for event" + event.title.rendered)
+    const a = eventCopy.querySelector("a");
+    a.href = "sub.html?id=" + event.id;
 
-//    const bodyTicket = eventCopy.querySelector(".body_ticket");
-//    bodyTicket.innerHTML = event.purchase_ticket;
+    const img = eventCopy.querySelector("img.cover");
+    const imgPath = event._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url;
+    img.setAttribute("src", imgPath)
+    img.setAttribute("alt", "Poster for event" + event.title.rendered)
 
-document.querySelector("#posts").appendChild(eventCopy)
+    //    const bodyTicket = eventCopy.querySelector(".body_ticket");
+    //    bodyTicket.innerHTML = event.purchase_ticket;
+
+    document.querySelector("#posts").appendChild(eventCopy)
 }
 
 // navigation mobile
-function openSlideMenu(){
+function openSlideMenu() {
     document.getElementById('side-menu').style.width = '250px';
     document.getElementById('main_content').style.marginLeft = '250px';
 }
 
-function closeSlideMenu(){
+function closeSlideMenu() {
     document.getElementById('side-menu').style.width = '0';
     document.getElementById('main_content').style.marginLeft = '0';
 }
-
