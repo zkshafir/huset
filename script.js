@@ -9,61 +9,56 @@ function init() {
     if (id) {
         getSingleEvent(id);
     } else {
-        getData();
+        getCategoryData(2);
     }
-    //        console.log("id")
-
-
-    getNavigation()
-}
-
-
-
-function getNavigation(){
-    fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/categories?per_page=100")
-    .then(res=>res.json())
-          .then(data=>{
-//        console.log(data)
-        data.forEach(addLink)
-    })
-}
-
-function addLink(oneItem){
-    console.log(oneItem.name)
-//    document.querySelector("nav").innerHTML=oneItem.name
-
-    function getSearchData(){
-  const urlParams = new URLSearchParams(window.location.search);
-  const search = urlParams.get("search");
-
-  fetch("https://kea-alt-del.dk/t9_2019_autumn/wp-json/wp/v2/book?_embed&search="+search)
-    .then(res=>res.json())
-    .then(handleData)
-}
-
-const link = document.createElement("a");
-    link.textContent=oneItem.name;
-    link.setAttribute("href", "category.html?category="+oneItem.id)
-    document.querySelector("nav").appendChild(link);
 
 }
+
+//function getNavigation() {
+//    fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/categories?per_page=100")
+//        .then(res => res.json())
+//        .then(data => {
+//            //        console.log(data)
+//            data.forEach(addLink)
+//        })
+//}
+
+//function addLink(oneItem) {
+//    console.log(oneItem.name)
+//    //    document.querySelector("nav").innerHTML=oneItem.name
+//
+//    function getSearchData() {
+//        const urlParams = new URLSearchParams(window.location.search);
+//        const search = urlParams.get("search");
+//
+//        fetch("https://kea-alt-del.dk/t9_2019_autumn/wp-json/wp/v2/book?_embed&search=" + search)
+//            .then(res => res.json())
+//            .then(handleData)
+//    }
+//
+//    const link = document.createElement("a");
+//    link.textContent = oneItem.name;
+//    link.setAttribute("href", "category.html?category=" + oneItem.id)
+//    document.querySelector("nav").appendChild(link);
+//
+//}
 
 function getData() {
     //        console.log("getData")
-    fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/event?_embed")
+    fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/event?categories=2")
         .then(res => res.json())
         .then(handleData)
 }
 
 function getCategoryData(catId) {
     //        console.log("getData")
-    fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/event?_embed")
+    fetch("http://www.nasehorn.com/huset_wp/wp-json/wp/v2/event?_embed&per_page=100&categories=" + catId)
         .then(res => res.json())
         .then(handleData)
 }
 
 function handleData(myData) {
-    //    console.log(myData);
+        console.log(myData);
     //1. loop
     myData.forEach(showEvent)
 }
@@ -100,12 +95,13 @@ function showEvent(event) {
     h1.textContent = event.title.rendered;
 
 
-    if (typeof (event._embedded["wp:featuredmedia"]) !== 'undefined') {
-        console.log(event._embedded["wp:featuredmedia"]);
+    if (typeof (event._embedded) !== 'undefined') {
+//        console.log(event._embedded["wp:featuredmedia"]);
         //debugger;
 
         const img = eventCopy.querySelector("img.cover");
         const imgPath = event._embedded["wp:featuredmedia"][0].media_details.sizes.medium_large.source_url;
+        console.log(imgPath);
         img.setAttribute("src", imgPath)
         img.setAttribute("alt", "Poster for event" + event.title.rendered)
     }
@@ -135,29 +131,39 @@ function showEvent(event) {
 
 //nav//
 
-const navSlide = () => {
-            const burger = document.querySelector('.burger');
-            const nav = document.querySelector('.nav-links');
-            const navLinks = document.querySelectorAll('.nav-links li');
-            //    Toggle Nav
-            burger.addEventListener('click', () => {
-                nav.classList.toggle('nav-active');
+//const navSlide = () => {
+//    const burger = document.querySelector('.burger');
+//    const nav = document.querySelector('.nav-links');
+//    const navLinks = document.querySelectorAll('.nav-links li');
+//    //    Toggle Nav
+//    burger.addEventListener('click', () => {
+//        nav.classList.toggle('nav-active');
+//
+//        //Animate Links
+//        navLinks.forEach((link, index) => {
+//            if (link.style.animation) {
+//                link.style.animation = ''
+//            } else {
+//                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.6}s`;
+//            }
+//        });
+//
+//        //     Burger Animation
+//
+//        burger.classList.toggle('toggle');
+//
+//    });
+//
+//}
+//
+//navSlide();
 
-                //Animate Links
-                navLinks.forEach((link, index) => {
-                    if (link.style.animation) {
-                        link.style.animation = ''
-                    } else {
-                        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.6}s`;
-                    }
-                });
 
-                //     Burger Animation
-
-                burger.classList.toggle('toggle');
-
-            });
-
-        }
-
-        navSlide();
+function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
