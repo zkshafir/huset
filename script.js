@@ -84,6 +84,14 @@ function showSingleEvent(event) {
     const img = document.querySelector(".cover");
     img.setAttribute("src", imgPath);
 
+    document.querySelector(".body_time").textContent = event.start_time;
+
+    document.querySelector(".body_date").textContent = event.event_date;
+
+    document.querySelector(".body_ticket").textContent = event.purchase_ticket;
+
+     document.querySelector(".body_venue").textContent = event.venue;
+
 }
 
 function showEvent(event) {
@@ -121,6 +129,7 @@ function showEvent(event) {
 
     const bodyVenue = eventCopy.querySelector(".body_venue");
     bodyVenue.textContent = event.venue;
+
 
     //    const bodyTicket = eventCopy.querySelector(".body_ticket");
     //    bodyTicket.innerHTML = event.purchase_ticket;
